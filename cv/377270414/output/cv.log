@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.17)  14 MAR 2026 02:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.10.17)  20 MAR 2026 17:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/kuwe/cv_bot/cv/cv.tex
-(/Users/kuwe/cv_bot/cv/cv.tex
+**/Users/kuwe/cv_bot/cv/377270414/cv.tex
+(/Users/kuwe/cv_bot/cv/377270414/cv.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -257,7 +257,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip57
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 57.
+Package hyperref Info: Option `colorlinks' set `true' on input line 58.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
@@ -277,7 +277,7 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthR=\skip71
 \@temptokenb=\toks21
 )
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 65
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 66
 .
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd
@@ -288,27 +288,27 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count290
 \l__pdf_internal_box=\box54
 )
-(/Users/kuwe/cv_bot/output/cv.aux)
+(/Users/kuwe/cv_bot/cv/377270414/output/cv.aux)
 \openout1 = `cv.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -358,73 +358,74 @@ LaTeX Font Info:    ... okay on input line 65.
 \makeMPintoPDFobject=\count296
 \everyMPtoPDFconversion=\toks23
 )
-Package hyperref Info: Link coloring ON on input line 65.
+Package hyperref Info: Link coloring ON on input line 66.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 70.
+(Font)              <10.95> on input line 71.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 70.
+(Font)              <8> on input line 71.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 70.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 92.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 92.
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 9
-4.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1phv.fd
-File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
-)
-Overfull \hbox (7.84781pt too wide) in paragraph at lines 120--121
-[]\T1/phv/m/n/10.95 Collaborated with team mem-bers to in-te-grate quan-ti-ta-t
-ive mod-els into uni-fied anal-y-sis pipeline
+(Font)              <6> on input line 71.
+
+Overfull \hbox (2.96686pt too wide) in paragraph at lines 97--98
+[]\T1/phv/m/n/10.95 Python (Py-Torch, Ten-sor-Flow, Scikit-Learn, Pan-das, NumP
+y, Mat-plotlib, SciPy),
  []
 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 104.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 104.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
+06.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 150.
 
 
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 133.
-
-Overfull \hbox (64.39818pt too wide) in paragraph at lines 160--161
-[]\T1/phv/m/n/10.95 Neural net-works (FC, CNN, GAN, VAE), RNNs, Trans-form-ers,
- NumPy/Pandas/Matplotlib
+Overfull \hbox (89.09016pt too wide) in paragraph at lines 180--181
+[]\T1/phv/m/n/10.95 Neural net-works (FC, CNN, GAN, VAE), Trans-form-ers, RNNs,
+ NLP, NumPy/Pandas/Matplotlib
  []
 
 
-Overfull \hbox (1.13911pt too wide) in paragraph at lines 162--163
-[]\T1/phv/m/n/10.95 Statistical in-fer-ence, hy-poth-e-sis test-ing, data anal-
-
+Overfull \hbox (7.16145pt too wide) in paragraph at lines 181--182
+[]\T1/phv/m/n/10.95 Statistical in-fer-ence, hy-poth-e-sis test-ing, un-cer-tai
+nty
  []
 
 
 
-[2] (/Users/kuwe/cv_bot/output/cv.aux)
+[2] (/Users/kuwe/cv_bot/cv/377270414/output/cv.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 10579 strings out of 473190
- 163716 string characters out of 5715799
- 593774 words of memory out of 5000000
+ 10577 strings out of 473190
+ 163809 string characters out of 5715799
+ 594774 words of memory out of 5000000
  33704 multiletter control sequences out of 15000+600000
  587045 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,526b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,544b,554s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
 usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/local/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/loca
 l/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texli
 ve/2025/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on /Users/kuwe/cv_bot/output/cv.pdf (2 pages, 73020 bytes).
+Output written on /Users/kuwe/cv_bot/cv/377270414/output/cv.pdf (2 pages, 72485
+ bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
- 19 named destinations out of 1000 (max. 500000)
+ 69 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,6 +1,6 @@
 import logging
 from datetime import datetime
-from src.config import LOG_DIR
+from config import LOG_DIR
 
 def get_logger(name: str) -> logging.Logger:
     logger = logging.getLogger(name)

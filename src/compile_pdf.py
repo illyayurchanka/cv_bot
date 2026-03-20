@@ -1,9 +1,8 @@
 import subprocess
 from pathlib import Path
 import os
-from src.config import CV_PATH, OUTPUT_DIR
 
-def compile_latex() -> Path:
+def compile_latex(OUTPUT_DIR: Path, CV_PATH: Path) -> Path:
     result = subprocess.run(
             ['pdflatex', '-output-directory', str(OUTPUT_DIR), str(CV_PATH)],
             capture_output=True,

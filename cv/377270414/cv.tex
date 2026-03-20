@@ -1,0 +1,186 @@
+%-------------------------
+% Illya Yurchanka - Base CV
+% Master file - adapt for each application
+%------------------------
+
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand*\familydefault{\sfdefault}
+
+\usepackage{geometry}
+\geometry{
+a4paper,
+top=2.0cm,
+bottom=0.5in,
+left=2.5cm,
+right=2.5cm
+}
+
+\setcounter{secnumdepth}{0}
+\pdfgentounicode=1
+
+\usepackage{enumitem}
+\setlist[itemize]{
+    noitemsep,
+    left=0pt..1.5em
+}
+\setlist[description]{itemsep=0pt}
+\setlist[enumerate]{align=left}
+
+\usepackage[dvipsnames]{xcolor}
+\colorlet{icnclr}{gray}
+
+\usepackage{titlesec}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\titleformat{\section}{\color{Sepia}\large\bfseries\uppercase}{}{}{\ruleafter}[\global\RemVStrue]
+\titleformat{\subsection}{\large\bfseries}{}{}{\rvs}
+\titleformat{\subsubsection}{\normalsize}{}{}{}
+
+\usepackage{xhfill}
+\newcommand\ruleafter[1]{#1~\xrfill[.5ex]{1pt}[gray]}
+
+\newif\ifRemVS
+\newcommand{\rvs}{
+    \ifRemVS
+        \vspace{-1.5ex}
+    \fi
+    \global\RemVSfalse
+}
+
+\usepackage[bookmarks=false]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=Sepia,
+    pdftitle={Illya Yurchanka - CV},
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+
+
+\begin{document}
+
+%== HEADER ==%
+\begin{center}
+    {\fontsize{25}{25}\selectfont\textbf{Illya Yurchanka}} \\ \bigskip
+    \href{mailto:i.yurchanka@gmail.com}{i.yurchanka@gmail.com} $|$
+    \href{https://github.com/illyayurchanka}{github.com/illyayurchanka} $|$
+    +48 572 473 066 $|$ Warsaw, Poland
+\end{center}
+
+\vspace{0.5ex}
+% ---------------------------------------------------------------
+% PROFILE SUMMARY — rewrite this for every application
+% Focus on: what you are, what you bring, what role you want
+% ---------------------------------------------------------------
+\begin{center}
+\parbox{0.92\textwidth}{%
+\small M.Sc.\ Physics student at the University of Warsaw with strong expertise in LLM accuracy evaluation, benchmarking, and inference optimisation. Implemented Multi-Head Latent Attention (MLA) for memory-efficient LLM inference and developed end-to-end ML pipelines with PyTorch. Extensive experience in ROC/AUC analysis, benchmark development, and performance evaluation of large language models. Seeking to contribute to state-of-the-art LLM evaluation infrastructure at NVIDIA.}
+\end{center}
+\vspace{0.5ex}
+
+
+% ---------------------------------------------------------------
+% SKILLS — reorder and trim per application
+% AI/ML roles:    lead with Programming + ML & Data
+% Quant roles:    lead with Programming + Quantitative
+% Telecom roles:  lead with Analytical + Tools, hide ML depth
+% ---------------------------------------------------------------
+\section{Skills}
+\begin{description}
+    \item[\textbf{ML \& AI:}] LLMs (MLA, KV Cache), Transformers, NLP, Vector Embeddings, CNN, RNN, Supervised/Unsupervised Learning, Hyperparameter Optimisation, LLM Accuracy Evaluation, ROC/AUC Analysis, Benchmark Development, Performance Benchmarking
+    \item[\textbf{Programming:}] Python (PyTorch, TensorFlow, Scikit-Learn, Pandas, NumPy, Matplotlib, SciPy), C++ (STL, Eigen, Boost), SQL (DuckDB, PostgreSQL)
+    \item[\textbf{Tools \& DevOps:}] Git, Docker, Linux/Bash, CMake, Make, ROOT/TMVA, PyTest, Pydantic, Mathematica
+    \item[\textbf{Languages:}] English C1, Polish C1, Russian (Native), Belarusian (Native)
+\end{description}
+
+
+\section{Education}
+\subsection{University of Warsaw $|$ {\normalfont\textit{M.Sc. in Physics}} \hfill Oct 2025 -- Jun 2027 (expected)}
+\begin{itemize}
+    \item GPA: 4.5/5 \quad Focus: Particle Physics, Machine Learning applications, Statistical Data Analysis
+\end{itemize}
+\subsection{University of Warsaw $|$ {\normalfont\textit{B.Sc. in Physics}} \hfill Oct 2021 -- Jun 2025}
+\begin{itemize}
+    \item GPA: 4.5/5 \quad Thesis: Identification of $\Lambda$ hyperons in CBM spectrometer using TMVA (ML)
+\end{itemize}
+
+
+% ---------------------------------------------------------------
+% EXPERIENCE — all entries kept; comment out irrelevant ones
+% per application using % at line start
+% ---------------------------------------------------------------
+\section{Experience}
+
+\subsection{M.Sc. Researcher -- CBM Experiment, GSI/FAIR (Darmstadt) \hfill Oct 2025 -- Present}
+\begin{itemize}
+    \item Developing C++ data processing workflows for the future CBM detector, applying ML techniques to simulated Au+Au collision data to improve particle identification and background rejection.
+    \item Performing quantitative analysis of model performance against validation benchmarks; evaluating classification accuracy and optimising detection thresholds using ROC/AUC metrics.
+    \item Managing and validating large simulation datasets in a production-like scientific computing environment; maintaining pipeline integrity across distributed analysis workflows.
+    \item Collaborating with an international team across Warsaw and GSI Darmstadt, coordinating codebase updates and contributing to shared analysis infrastructure.
+\end{itemize}
+
+\subsection{Research Intern -- General Relativity \hfill Mar 2025 -- Jun 2025}
+\subsubsection{Center for Theoretical Physics, Polish Academy of Sciences}
+\begin{itemize}
+    \item Conducted independent research on general relativity; reviewed 10+ peer-reviewed publications to identify novel theoretical approaches and computational methodologies.
+    \item Built mathematical models and performed symbolic/numerical computations in Mathematica and SciPy, producing analytical results presented to senior researchers.
+\end{itemize}
+
+\subsection{Warsaw Econometric Challenge \hfill Apr 2025}
+\begin{itemize}
+    \item Led a team in a data science competition; rapidly adopted SQL and DuckDB frameworks to deliver ML-based predictive solutions under strict time pressure.
+    \item Applied Scikit-Learn pipelines for competitive modelling, gaining practical end-to-end deployment experience; delivered validated predictions against held-out test sets.
+\end{itemize}
+
+
+% ---------------------------------------------------------------
+% PROJECTS — comment out projects not relevant to the role
+% AI/ML/LLM: keep MLA, Food Nutrition, Bachelor Thesis
+% ---------------------------------------------------------------
+\section{Projects}
+
+% STRONG for AI/ML/LLM infrastructure roles — top priority
+\subsection{Multi-Head Latent Attention Implementation \hfill Oct 2025}
+\textit{Python, PyTorch} \quad \href{https://github.com/illyayurchanka/nanodeepsk}{\small[GitHub]}
+\begin{itemize}
+    \item Implemented the MLA mechanism from scratch, compressing the KV cache by projecting keys and values into a low-dimensional latent space -- significantly reducing inference memory footprint while preserving attention quality on par with standard multi-head attention.
+    \item Conducted thorough benchmarking and comparative evaluation of attention mechanisms, quantifying accuracy and efficiency trade-offs using standard LLM benchmarks.
+\end{itemize}
+
+% GOOD — shows end-to-end ML pipeline and vector embeddings
+\subsection{Food Nutrition Analysis with Machine Learning \hfill Jan 2026}
+\textit{Python, Scikit-Learn, Pandas, NumPy, Transformers} \quad \href{https://github.com/illyayurchanka/nutritions}{\small[GitHub]}
+\begin{itemize}
+    \item Built an end-to-end ML pipeline on the Open Food Facts dataset: predicted NutriScore grades, estimated calorie content, classified ultra-processed foods (NOVA), and scored environmental impact (Eco-Score).
+    \item Implemented a semantic search recommender using vector embeddings to surface healthier product alternatives.
+\end{itemize}
+
+% STRONG for evaluation/benchmark skills — ROC-AUC, model comparison
+\subsection{Bachelor Thesis -- $\Lambda$ Hyperon Identification in CBM Spectrometer \hfill May 2025}
+\textit{C++, ROOT, ROOT-TMVA}
+\begin{itemize}
+    \item Benchmarked KNN, AdaBoost, and MLP classifiers for signal/background separation in high-energy physics data; ensemble methods achieved the best ROC-AUC (0.95+), directly informing the experiment's offline reconstruction strategy.
+    \item Managed the full evaluation pipeline from raw data ingestion to validated results across a large simulation dataset; developed automated benchmark scripts for model comparison.
+\end{itemize}
+
+
+% ---------------------------------------------------------------
+% COURSES — reorder per application
+% Stats-heavy roles: put Statistical Analysis first
+% ML/AI roles: put Machine Learning first
+% ---------------------------------------------------------------
+\section{Relevant Courses}
+\begin{description}
+    \item[\textbf{Machine Learning}] Neural networks (FC, CNN, GAN, VAE), Transformers, RNNs, NLP, NumPy/Pandas/Matplotlib \hfill 2023/2024
+    \item[\textbf{Statistical Analysis of Experimental Data}] Statistical inference, hypothesis testing, uncertainty estimation, ROC/AUC evaluation, model benchmarking, data interpretation \hfill 2025/2026
+    \item[\textbf{Programming \& Numerical Methods}] Advanced C++, numerical methods, physical simulations in Python \hfill 2023/2024
+    \item[\textbf{Programming}] STL algorithms, templates, containers \hfill 2022/2023
+\end{description}
+
+\end{document}
