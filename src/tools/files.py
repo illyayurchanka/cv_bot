@@ -15,7 +15,8 @@ DEFAULT_CV = os.path.expanduser('/Users/kuwe/projects/cv_bot/cv/377270414/cv.tex
 def read_file(file_path: str | None = None, path: str | None = None) -> str:
     try:
         actualpath = file_path or path
-        path = os.path.expanduser(DEFAULT_CV)
+
+        path = os.path.expanduser(actualpath)
         with open(path, "r") as f:
             content = f.read()
             return content[:10_000]
@@ -37,7 +38,8 @@ def read_file(file_path: str | None = None, path: str | None = None) -> str:
         )
 def write_file(content: str, file_path: str | None = None, path: str | None = None) -> str:
     try:
-        path = os.path.expanduser(DEFAULT_CV)
+        actualpath = file_path or path
+        path = os.path.expanduser(actualpath)
         with open(path, "w") as f:
             f.write(content)
         return f"successfully wrote {len(content)} chars to {path}"
