@@ -79,5 +79,5 @@ class DATABASE:
 
     @staticmethod
     def get_pdf_path(chat_id: str) -> Path:
-        file_name = CV_DIR / chat_id / "output"
+        file_name = CV_DIR / chat_id / "output/"
         return str(file_name)

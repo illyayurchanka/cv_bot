@@ -1,4 +1,5 @@
 import telebot
+import os
 from telebot import types
 from pathlib import Path
 from src.agent import run_agent
@@ -30,7 +31,7 @@ def send_welcome(message):
         logger.info(f"Users CV is in database. Waiting for the users link.")
         bot.reply_to(message, "Hello, send me a job offer and I tailor your cv towards it.")
 
-def send_pdf(chat_id: str, pdf_path: Path):
+def send_pdf(chat_id: str, pdf_path: str):
     with open (pdf_path, 'rb') as pdf:
         bot.send_document(chat_id, pdf, caption='Here is your file!')
 
@@ -41,7 +42,6 @@ def handle_message(message):
     link = message.text.strip()
     username = message.from_user.username or message.from_user.first_name
     logger.info(f"Link received from @{username} ({chat_id}: {link})")
-
     chat_id_var.set(chat_id)
 
     if not link:
@@ -66,7 +66,7 @@ def handle_choice(call):
     username = call.from_user.username or call.from_user.first_name
     chat_id = str(call.message.chat.id)
     link = pending_link[chat_id]
-
+    chat_id_var.set(chat_id)
     logger.info(f"@{username} chose: {action} for {link}")
 
     bot.delete_message(chat_id, call.message.message_id)
@@ -79,28 +79,33 @@ def handle_choice(call):
         status = bot.send_message(chat_id, "Creating you a CV...")
         prompt = f"Task: rewrite the CV for the following job offer: {link}."
         summarize = False
-    logger.info("Sending prompt to the agent")
     response = run_agent(prompt, summarize=summarize)
-    if not summarize:
-        send_pdf(chat_id, Path('~/projects/cv_bot/pdf/cv.pdf'))
-
-    try:
-        bot.edit_message_text(f'Here is your description {response}', chat_id, status.message_id)
-    except telebot.apihelper.ApiTelegramException as e:
-        if "MESSAGE_TOO_LONG" in str(e):
-            logger.warning(f"Message too long ({len(text)} chars), asking agent to shorten...")
-            
-            # ask Claude to shorten it
-            shorter = run_agent(f"This response is too long for Telegram (max 4096 chars). Summarise it concisely:\n\n{response}")
-            
-            try:
-                bot.send_message(chat_id, shorter)
-            except telebot.apihelper.ApiTelegramException:
-                # last resort: hard truncate
-                bot.send_message(chat_id, shorter[:4090] + "\n...")
-        else:
-            logger.error(f"Telegram API error: {e}")
-            raise
+    if response == "Agent reached max iterations without completing the task.":
+        bot.edit_message_text("Agent reached max iterations without completing the task.", chat_id, status.message_id)
+    else:
+        try:
+            bot.edit_message_text(f'Here is your description {response}', chat_id, status.message_id)
+            if not summarize:
+                print("hi bob")
+                out_path = os.path.join(DATABASE.get_pdf_path(chat_id), "cv.pdf")
+                print(out_path)
+                logger.info(f"Sending sending file: {out_path}.")
+                send_pdf(chat_id, out_path)
+        except telebot.apihelper.ApiTelegramException as e:
+            if "MESSAGE_TOO_LONG" in str(e):
+                logger.warning(f"Message too long ({len(text)} chars), asking agent to shorten...")
+                
+                # ask Claude to shorten it
+                shorter = run_agent(f"This response is too long for Telegram (max 4096 chars). Summarise it concisely:\n\n{response}")
+                
+                try:
+                    bot.send_message(chat_id, shorter)
+                except telebot.apihelper.ApiTelegramException:
+                    # last resort: hard truncate
+                    bot.send_message(chat_id, shorter[:4090] + "\n...")
+            else:
+                logger.error(f"Telegram API error: {e}")
+                raise
 
 
 @bot.message_handler(content_types=['document'])

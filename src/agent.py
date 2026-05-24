@@ -7,6 +7,13 @@ from pathlib import Path
 from src.context import get_chat_id
 from src.database import DATABASE
 
+def get_user_pdf_path() -> Path:
+    chat_id = get_chat_id()
+    if not chat_id:
+        raise RuntimeError("No chat_id saved")
+
+    return DATABASE.get_pdf_path(chat_id)
+
 def get_user_cv_path() -> Path:
     chat_id = get_chat_id()
     if not chat_id:
@@ -31,7 +38,7 @@ with open("AGENTS.md", 'r', encoding='utf-8') as file:
 
 def run_agent(task: str, max_iterations: int = 10, summarize: bool = True) -> str:
     """Run the agent on a task until completion."""
-    messages = [{"role": "system", "content": SYSTEM_PROMPT+f"\nCV path for user is following: {get_user_cv_path()}"},
+    messages = [{"role": "system", "content": SYSTEM_PROMPT+f"\nCV path for user is following: {get_user_cv_path()}. OUTPUT path for user is following: {get_user_pdf_path()}."},
                 {"role": "user", "content": task}
             ]
     logger.info("Load prompts.")
@@ -100,7 +107,7 @@ def run_agent(task: str, max_iterations: int = 10, summarize: bool = True) -> st
                 break
             elif name == 'web_fetch':
                 page_read = True
-            elif name == 'write_file':
+            elif name == 'write_cv':
                 cv_changed = True
                 cv_compiled = False
 
@@ -130,7 +137,6 @@ def run_agent(task: str, max_iterations: int = 10, summarize: bool = True) -> st
                 "content": str(result),
                 "name":    name,
             })
-    result = "Max iterations reached."
     return "Agent reached max iterations without completing the task."
 
 if __name__ == "__main__":

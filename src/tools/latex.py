@@ -1,11 +1,18 @@
 import subprocess
 import os
-from typing import Optional
+# from typing import Optional
 from .registry import tool
 from .schemas import CompileLatexArgs
 from src.context import get_chat_id
 from src.database import DATABASE
 from pathlib import Path
+
+def get_user_cv_path() -> Path:
+    chat_id = get_chat_id()
+    if not chat_id:
+        raise RuntimeError("No chat_id saved")
+
+    return DATABASE.get_cv_path(chat_id)
 
 def get_user_pdf_path() -> Path:
     chat_id = get_chat_id()
@@ -19,21 +26,16 @@ def get_user_pdf_path() -> Path:
         model=CompileLatexArgs,
         description="Compile a LaTeX file and return any erros or success status.",
         parameters={
-            "path": {"type": "string", "description": "Path to the .tex file to compile"},
-            "output_dir": {"type": "string", "description": "Path to the .pdf output"}
+            # "path": {"type": "string", "description": "Path to the .tex file to compile"},
+            # "output_dir": {"type": "string", "description": "Path to the .pdf output"}
             }
         )
-def compile_latex(path: str, output_dir: Optional[str] = "./output/") -> str:
-    if not os.path.exists(path):
-        return f"Error: File not found {path}"
-    if not path.endswith(".tex"):
-        return f"Error: Not a .tex file, got: {path}"
-    
-    work_dir = os.path.dirname(os.path.abspath(path))
-    os.makedirs(work_dir, exist_ok=True)
+def compile_latex() -> str:
+    output = get_user_pdf_path()
+    cv = get_user_cv_path()
 
     try:
-        cmd = ["pdflatex", "-interaction=nonstopmode", "-output-directory", get_user_pdf_path(), os.path.abspath(path)]
+        cmd = ["pdflatex", "-interaction=nonstopmode", "-output-directory", os.path.abspath(output), os.path.abspath(cv)]
         result = subprocess.run(
                 cmd,
                 capture_output = True,
@@ -41,8 +43,8 @@ def compile_latex(path: str, output_dir: Optional[str] = "./output/") -> str:
                 timeout=60
                 )
         if result.returncode == 0:
-            pdf_name = os.path.splitext(os.path.basename(path))[0] + ".pdf"
-            pdf_path = os.path.join(work_dir, pdf_name)
+            pdf_name = os.path.splitext(os.path.basename(cv))[0] + ".pdf"
+            pdf_path = os.path.join(output, pdf_name)
             return f"Compiled successful. PDF saved to: {pdf_path}"
         else:
             errors = _extract_latex_errors(result.stdout + result.stderr)
