@@ -4,6 +4,7 @@ from pathlib import Path
 from src.agent import run_agent
 from config import BOT_TOKEN
 from src.database import DATABASE
+from src.context import chat_id_var
 import logging
 
 logging.basicConfig(
@@ -14,15 +15,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 bot = telebot.TeleBot(BOT_TOKEN)
-pdf_path = './output/cv.pdf'
 
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
-    # save_user(
-    #     chat_id=str(message.chat.id),
-    #     username=message.from_user.username,
-    #     first_name=message.from_user.first_name
-    # )
     chat_id = str(message.chat.id)
     username = str(message.chat.username)
     bot.reply_to(message, "Hello")
@@ -46,6 +41,8 @@ def handle_message(message):
     link = message.text.strip()
     username = message.from_user.username or message.from_user.first_name
     logger.info(f"Link received from @{username} ({chat_id}: {link})")
+
+    chat_id_var.set(chat_id)
 
     if not link:
         return
@@ -89,7 +86,6 @@ def handle_choice(call):
 
     try:
         bot.edit_message_text(f'Here is your description {response}', chat_id, status.message_id)
-        # send_pdf(chat_id, pdf_path)
     except telebot.apihelper.ApiTelegramException as e:
         if "MESSAGE_TOO_LONG" in str(e):
             logger.warning(f"Message too long ({len(text)} chars), asking agent to shorten...")

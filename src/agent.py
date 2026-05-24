@@ -3,6 +3,16 @@ from src.tools import execute_tool, get_tool_schemas
 from ollama import Client
 import logging
 from src.logging.agent_log import AgentTrace
+from pathlib import Path
+from src.context import get_chat_id
+from src.database import DATABASE
+
+def get_user_cv_path() -> Path:
+    chat_id = get_chat_id()
+    if not chat_id:
+        raise RuntimeError("No chat_id saved")
+
+    return DATABASE.get_cv_path(chat_id)
 
 logging.basicConfig(
         level=logging.INFO,
@@ -21,13 +31,11 @@ with open("AGENTS.md", 'r', encoding='utf-8') as file:
 
 def run_agent(task: str, max_iterations: int = 10, summarize: bool = True) -> str:
     """Run the agent on a task until completion."""
-    messages = [{"role": "system", "content": SYSTEM_PROMPT},
+    messages = [{"role": "system", "content": SYSTEM_PROMPT+f"\nCV path for user is following: {get_user_cv_path()}"},
                 {"role": "user", "content": task}
             ]
     logger.info("Load prompts.")
     tools = get_tool_schemas()
-    # logger.info(f"Tools available: {[t['function']['name'] for t in tools]}") 
-    # logger.info(f"Tools available: {[t['function']['parameters'] for t in tools]}") 
     trace = AgentTrace()
     
     page_read = False
@@ -134,41 +142,3 @@ if __name__ == "__main__":
     print(f"Working on task")
     result = run_agent(task)
     print(f"Result: {result}")
-
-
-# import json
-# from datetime import datetime
-# import os
-# def save_trace(messages: list, task: str, result: str):
-#     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-#     path = os.path.expanduser(f"~/projects/cv_bot/logs/trace_{timestamp}.txt")
-#     os.makedirs(os.path.dirname(path), exist_ok=True)
-#
-#     with open(path, "w") as f:
-#         f.write(f"TASK: {task}\n")
-#         f.write(f"TIME: {timestamp}\n")
-#         f.write("=" * 60 + "\n\n")
-#
-#         for msg in messages:
-#             role = msg["role"].upper()
-#             f.write(f"[{role}]\n")
-#
-#             # tool calls block
-#             if msg.get("tool_calls"):
-#                 for tc in msg["tool_calls"]:
-#                     f.write(f"  >> TOOL CALL: {tc.function.name}\n")
-#                     f.write(f"  >> ARGS: {json.dumps(tc.function.arguments, indent=6)}\n")
-#
-#             # main content
-#             if msg.get("content"):
-#                 f.write(f"{msg['content']}\n")
-#
-#             # tool result
-#             if role == "TOOL":
-#                 f.write(f"  (tool: {msg.get('name', '?')})\n")
-#
-#             f.write("\n" + "-" * 60 + "\n\n")
-#
-#         f.write(f"FINAL RESULT:\n{result}\n")
-#
-#     logger.info(f"Trace saved to {path}")

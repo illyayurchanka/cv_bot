@@ -3,6 +3,16 @@ import os
 from typing import Optional
 from .registry import tool
 from .schemas import CompileLatexArgs
+from src.context import get_chat_id
+from src.database import DATABASE
+from pathlib import Path
+
+def get_user_pdf_path() -> Path:
+    chat_id = get_chat_id()
+    if not chat_id:
+        raise RuntimeError("No chat_id saved")
+
+    return DATABASE.get_pdf_path(chat_id)
 
 @tool(
         name="compile_latex",
@@ -23,7 +33,7 @@ def compile_latex(path: str, output_dir: Optional[str] = "./output/") -> str:
     os.makedirs(work_dir, exist_ok=True)
 
     try:
-        cmd = ["pdflatex", "-interaction=nonstopmode", "-output-directory", "/Users/kuwe/projects/cv_bot/pdf/", os.path.abspath(path)]
+        cmd = ["pdflatex", "-interaction=nonstopmode", "-output-directory", get_user_pdf_path(), os.path.abspath(path)]
         result = subprocess.run(
                 cmd,
                 capture_output = True,
