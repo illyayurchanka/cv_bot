@@ -84,7 +84,7 @@ def handle_choice(call):
         status = bot.send_message(chat_id, "Creating you a CV...")
         prompt = f"Task: rewrite the CV for the following job offer: {link}."
         summarize = False
-
+        send_pdf(chat_id, Path('~/projects/cv_bot/pdf/cv.pdf'))
     response = run_agent(prompt, summarize=summarize)
 
     try:
