@@ -15,7 +15,6 @@ logger = logging.getLogger(__name__)
 
 bot = telebot.TeleBot(BOT_TOKEN)
 pdf_path = './output/cv.pdf'
-# init_db()
 
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
@@ -55,7 +54,6 @@ def handle_message(message):
         logger.warning(f"@{username} ({chat_id}) has no CV on file")
         bot.reply_to(message, 'Please send your CV first!')
         return
-    bot.send_message(chat_id, "Suck my balls")
     logger.info(f"Sending action choice to @{username}")
     pending_link[chat_id] = link
     markup = types.InlineKeyboardMarkup()
@@ -84,8 +82,10 @@ def handle_choice(call):
         status = bot.send_message(chat_id, "Creating you a CV...")
         prompt = f"Task: rewrite the CV for the following job offer: {link}."
         summarize = False
-        send_pdf(chat_id, Path('~/projects/cv_bot/pdf/cv.pdf'))
+    logger.info("Sending prompt to the agent")
     response = run_agent(prompt, summarize=summarize)
+    if not summarize:
+        send_pdf(chat_id, Path('~/projects/cv_bot/pdf/cv.pdf'))
 
     try:
         bot.edit_message_text(f'Here is your description {response}', chat_id, status.message_id)
