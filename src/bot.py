@@ -29,7 +29,7 @@ def send_welcome(message):
     bot.reply_to(message, "Hello")
     logger.info(f"Bot started. Checking for the CV in database.")
     DATABASE.save_user(chat_id, username)
-    if DATABASE.get_cv_status(chat_id) is 0:
+    if DATABASE.get_cv_status(chat_id) == 0:
         logger.info(f"No CV in database. Waiting for the users CV.")
         bot.reply_to(message, "Hello, send me a you cv in .tex format.")
     else:
@@ -51,7 +51,7 @@ def handle_message(message):
     if not link:
         return
 
-    if DATABASE.get_cv_status(chat_id) is 0:
+    if DATABASE.get_cv_status(chat_id) == 0:
         logger.warning(f"@{username} ({chat_id}) has no CV on file")
         bot.reply_to(message, 'Please send your CV first!')
         return
